@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.stratml.net/ProductOrServiceDescription" xmlns:stratml="http://www.stratml.net/ProductOrServiceDescription" targetNamespace="http://www.stratml.net/ProductOrServiceDescription" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2011-07-10-11:37pm">
+  <!--Root Element-->
+  <xsd:element name="ProductOrServiceDescription" id="uuid-91D3FADB-E6CF-45a0-9676-34E1DBCFE10C">
+    <xsd:annotation>
+      <xsd:documentation>A document listing the features and functions of a product or service.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Name" id="uuid-C1032E04-gp98-4810-9C84-8D49216BDFEE" minOccurs="1" />
+        <xsd:element ref="Description" id="uuid-C1032E04-qr07-4810-9C84-8D49216BDFEE" minOccurs="0" />
+		<xsd:element ref="Categorization" id="uuid-3c9c0a38-4d9b-4146-f00a-f05e722ec4f6" minOccurs="0" maxOccurs="unbounded" />
+        <xsd:element ref="Organization" id="uuid-C800A4FC-bv334-45d5-B862-70FBF6628156" minOccurs="0" />
+        <xsd:element ref="Stakeholder" id="uuid-3c9c0a38-4d9b-4146-a0f0-f05e722e6f4c" minOccurs="0" maxOccurs="unbounded" />
+        <xsd:element ref="Objective" id="uuid-3c9c0a38-4d9b-4146-a0f0-f05e722ec4f6" minOccurs="0" maxOccurs="unbounded" />
+        <xsd:element ref="OtherInformation" id="uuid-C800A4FC-mucp-45d5-B862-70FBF6628156" minOccurs="0" />
+        <xsd:element ref="FeaturesAndFunctions" id="uuid-41F187FB-rrbb-491b-8B0E-65B14A57A4C8" />
+        <xsd:element ref="Picture" id="uuid-3c9c0a38-4d9b-4146-f0a0-f05e722e6f4c" minOccurs="0" maxOccurs="unbounded" />
+        <xsd:element ref="Cost" id="uuid-C1032E04-qr07-4810-9C84-8D49216Beefd" minOccurs="0" maxOccurs="unbounded" />
+        <xsd:element ref="Relationship" id="uuid-C1032E04-qr07-4810-9C84-8D49216fdeeB" minOccurs="0" maxOccurs="unbounded" />
+        <xsd:element ref="AdministrativeInformation" id="uuid-29939A46-92mx-45a1-B865-D62FEEE9AB8C" minOccurs="0" />
+        <xsd:element ref="Submitter" id="uuid-4147E26D-BB81-495f-33mv-1D63EBE45A62" minOccurs="0" />
+      </xsd:sequence>
+      <xsd:attribute name="Type" use="required">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="Product" />
+            <xsd:enumeration value="Service" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+  <!--Elements A - Z-->
+  <xsd:element name="Acronym" type="xsd:string" id="uuid-a21e6dc4-ABC3-4120-b881-ce72882fc958">
+    <xsd:annotation>
+      <xsd:documentation source="documentation" xml:lang="EN">An abbreviation of a proper name usually composed of the first letters of each word in the name.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="ActualResult" id="uuid-576F1BF5-C7E4-5v8a-88E9-2781C538F8D4">
+    <xsd:annotation>
+      <xsd:documentation source="documentation" xml:lang="EN">A measurable result achieved on or before a specified date.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="NumberOfUnits" id="uuid-9595F589-38BF-bfe3-81A6-43D9DAA36700" minOccurs="0" />
+		<xsd:element ref="Description" id="uuid-9595F589-38BF-bfe3-6a18-43D9DAA36700" minOccurs="0" />
+        <xsd:element ref="StartDate" id="uuid-9595F589-38BF-47nw-6a18-43D9DAA36700" minOccurs="0" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="AdministrativeInformation" type="AdministrativeInformationType" id="uuid-9d240214-zas9-4dd9-b98a-c62448b63f26">
+    <xsd:annotation>
+      <xsd:documentation source="documentation" xml:lang="EN">Useful information that is not essential and thus not part of the core of the plans or reports.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="Categorization" type="CategorizationType"/>
+  <xsd:element name="Category" type="CategoryType"/>
+  <xsd:element name="Cost">
+    <xsd:annotation>
+      <xsd:documentation>The amount of currency determined by multiplying the price times the quantity to be purchased.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="CurrencyType" minOccurs="1" />
+        <xsd:element ref="Price" minOccurs="1" />
+        <xsd:element ref="Quantity" minOccurs="1" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="CurrencyType" type="CurrencyTypeType" id="uuid-6289635d-ksla-40bd-978c-37ae6ede5f7e">
+    <xsd:annotation>
+      <xsd:documentation>The the type of money in which the price of the product or service is documented.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="Description" type="xsd:string" id="uuid-6289635d-0082-40bd-978c-37ae6ede5f7e">
+    <xsd:annotation>
+      <xsd:documentation source="documentation" xml:lang="EN">A sentence or short paragraph defining and explaining a concept.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="EmailAddress" type="xsd:string" id="uuid-412bb450-nmw3-4dec-9269-a92209232df1">
+    <xsd:annotation>
+      <xsd:documentation source="documentation" xml:lang="EN">The Email address of the person submitting the plan or report.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="Feature" type="FeatureType" id="uuid-50f98ade-573c-2566-8696-1d0e4a2c7ff3">
+    <xsd:annotation>
+      <xsd:documentation source="documentation" xml:lang="EN">A physical characteristic of a product or service.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="FirstName" type="xsd:string" id="uuid-a8c3e55c-825c-404a-97b5-16022d9369ac">
+    <xsd:annotation>
+      <xsd:documentation source="documentation" xml:lang="EN">The first name of the person submitting the plan or report.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="Function" type="FunctionType" id="uuid-5e02d6ec-d669-0m2k-b443-e7716bd27528">
+    <xsd:annotation>
+      <xsd:documentation source="documentation" xml:lang="EN">An activity performed by a product or service.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="Identifier" type="xsd:ID" id="uuid-a9cee972-34lS-42a9-8876-03bd0166689c">
+    <xsd:annotation>
+      <xsd:documentation source="documentation" xml:lang="EN">A string of alphanumeric characters by which the information contained within an element is distinguished from other versions of the same information as well as information contained in other instances of the same element.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="LastName" type="xsd:string" id="uuid-d48842b4-eRPS-4f71-9502-1a991b707b38">
+    <xsd:annotation>
+      <xsd:documentation source="documentation" xml:lang="EN">The last name of the person submitting the plan or report.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="MeasurementDimension" id="uuid-A81AF0C9-0079-44dd-9E2C-77F601EB13D2">
+    <xsd:annotation>
+      <xsd:documentation source="documentation" xml:lang="EN">The aspect of reality to be measured.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:simpleContent>
+        <xsd:extension base="xsd:string" />
+      </xsd:simpleContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="MeasurementInstance">
+    <xsd:annotation>
+      <xsd:documentation source="documentation" xml:lang="EN">A measurement at a point in time.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="ActualResult" id="uuid-B52A1491-AC8D-4548-A1A4-628342FA525A" minOccurs="0" maxOccurs="unbounded" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Name" type="xsd:string" id="uuid-f6300ca4-39ad-455c-a963-dfef45f558d3">
+    <xsd:annotation>
+      <xsd:documentation source="documentation" xml:lang="EN">A word or short phrase intended to identify a concept within the context in which is it being applied.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="NumberOfUnits" id="uuid-41DEC7F0-F974-52Dj-B535-B219F2EB284A">
+    <xsd:annotation>
+      <xsd:documentation source="documentation" xml:lang="EN">A numeric value (number) associated with a type of measurement.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:simpleContent>
+        <xsd:extension base="xsd:decimal" />
+      </xsd:simpleContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Objective" id="uuid-AA88DC79-BC74-4a7c-97BD-37EDD048D14C">
+    <xsd:annotation>
+      <xsd:documentation source="documentation" xml:lang="EN">A target level of results against which achievement is to be measured within a single resource allocation and performance execution cycle.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:complexContent>
+        <xsd:extension base="ObjectiveType" />
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Organization" id="uuid-9d589d53-42ce-4c18-b5db-5be8075c1be5">
+    <xsd:annotation>
+      <xsd:documentation source="documentation" xml:lang="EN">The legal or logical entity to which the plan or report applies.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Name" id="uuid-e871651e-e943-1141-b0b6-eb1f5754f3be" minOccurs="0" />
+        <xsd:element ref="Acronym" id="uuid-eb510ea2-07de-40ec-95f1-abdf6644e002" minOccurs="0" />
+        <xsd:element ref="Identifier" id="uuid-d5b4b082-8326-46a8-a475-533813a4ed29" minOccurs="0" />
+        <xsd:element ref="WebAddress" id="uuid-d5b4b082-8326-46a8-a475-533813a492de" minOccurs="0" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="OtherInformation" type="xsd:string" id="uuid-2cfca418-2c5g-4fa1-b233-d1bd60d0d86a">
+    <xsd:annotation>
+      <xsd:documentation source="documentation" xml:lang="EN">Additional explanation or guidance that is not expressly addressed in other elements of the schema.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="PerformanceIndicator" id="uuid-5E26BC7A-0437-48ce-A11E-D3B566026C49">
+    <xsd:annotation>
+      <xsd:documentation source="documentation" xml:lang="EN">A measurement dimension, unit of measurement, and measurement instance specifying target and actual results, e.g., of inputs applied, outputs produced, processes conducted, and outcomes realized.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="SequenceIndicator" id="uuid-49339C06-8c33-4e80-8FFE-B1BF1668EE5D" minOccurs="0" />
+        <xsd:element ref="MeasurementDimension" id="uuid-17139C06-33C8-4e80-8FFE-B1BF1668ED4C" minOccurs="0" />
+        <xsd:element ref="UnitOfMeasurement" minOccurs="0" />
+        <xsd:element ref="Identifier" id="uuid-5C262CB2-FB6B-4508-BF8o-2954CFC98841" minOccurs="0" />
+        <xsd:element ref="MeasurementInstance" minOccurs="0" maxOccurs="unbounded" />
+        <xsd:element ref="OtherInformation" id="uuid2FC2C862-2FE0-2f44-8F3A-A48A1E07BEBC" minOccurs="0" />
+      </xsd:sequence>
+      <xsd:attribute name="PerformanceIndicatorType" type="PerformanceIndicatorTypeType" />
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="PhoneNumber" type="xsd:string" id="uuid-9084c2d2-37b4-4189-a784-a86a4469a01c">
+    <xsd:annotation>
+      <xsd:documentation source="documentation" xml:lang="EN">The telephone number of the person submitting the plan.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="Picture" type="PictureType" id="uuid-9084c2d2-37b4-9814-a784-a86a4469a01c">
+    <xsd:annotation>
+      <xsd:documentation source="documentation" xml:lang="EN">A photograph of a product or a service location.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="Price" id="uuid-91D3FADB-E6CF-45a0-9676-34E1DBCFc01e">
+    <xsd:annotation>
+      <xsd:documentation>The amount to be paid to acquire a product or service.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="PublicationDate" type="xsd:date" id="uuid-04d8f96c-cf5b-458e-8de4-f5e2746e8b8b">
+    <xsd:annotation>
+      <xsd:documentation source="documentation" xml:lang="EN">The day, month, and year a plan or report was published in its current form.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="Quantity" id="uuid-91D3FADB-E6CF-45a0-9676-34E1DBCFjsiw">
+    <xsd:annotation>
+      <xsd:documentation>The number of units of a product or service to be acquired.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="Relationship">
+    <xsd:annotation>
+      <xsd:documentation>A conceptual connection between two elements that have Identifiers.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Name" minOccurs="0" />
+        <xsd:element ref="Description" minOccurs="0" />
+        <xsd:element ref="Identifier" minOccurs="0" />
+        <xsd:element ref="WebAddress" minOccurs="0" />
+        <xsd:element ref="OtherInformation" minOccurs="0" />
+      </xsd:sequence>
+      <xsd:attribute name="RelationshipType" type="RelationshipTypeType" />
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Role" id="uuid-6BEF4BD5-bd9c-497c-A264-B81B443F36AA">
+    <xsd:annotation>
+      <xsd:documentation source="documentation" xml:lang="EN">A complex element containing other elements enabling the naming, description, and categorization of different kinds of interests individuals and groups may have in the achievement of goals and objectives.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Name" id="uuid-8AA40586-F938-df44-8D84-873E6E172480" minOccurs="0" />
+        <xsd:element ref="Description" id="uuid-E7588067-5345-4087-AE9F-191CF2058B09" minOccurs="0" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="SequenceIndicator" type="xsd:string" id="uuid-7f10f639-fc7e-4513-804c-5f4f7592c5e5">
+    <xsd:annotation>
+      <xsd:documentation source="documentation" xml:lang="EN">An alphanumeric identifier applied to an element to designate its order in a series.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="Source" type="xsd:anyURI" id="uuid-03b90177-b31d-4e32-ada9-7c7a1eb1703b">
+    <xsd:annotation>
+      <xsd:documentation source="documentation" xml:lang="EN">The Web address (URL) for the authoritative source of this document.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="Stakeholder" id="uuid-1effcb49-2649-4c9b-bdc2-92971c9fc9cf">
+    <xsd:annotation>
+      <xsd:documentation source="documentation" xml:lang="EN">An individual whose interests may be affected by or whose action may be required to achieve a goal or objective.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Name" id="uuid-35cc454d-43d4-46b2-845a-eeb3ff8605dd" minOccurs="0" />
+        <xsd:element ref="Description" id="uuid-7e18eb24-475c-fcb4-a3c4-1c43adaf127c" minOccurs="0" />
+		<xsd:element ref="Identifier" id="uuid-7e18eb24-c574-fcb4-a3c4-1c43adaf127c" minOccurs="0" />
+        <xsd:element ref="Role" id="uuid-75B20BA6-6B35-490b-87BE-B98008D49CC2" minOccurs="0" maxOccurs="unbounded" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="StartDate" type="xsd:date" id="uuid-11a1e9c3-b959-4c2e-b3de-5e1296eb6ab3">
+    <xsd:annotation>
+      <xsd:documentation source="documentation" xml:lang="EN">The year, month and day the element with which it is associated is scheduled to begin.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="FeaturesAndFunctions" id="uuid-ce9c9293-e374-0084-8d62-9ee87d0c9887">
+    <xsd:annotation>
+      <xsd:documentation source="documentation" xml:lang="EN">A listing of the features and functions of a product or service.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Feature" id="uuid-f8d6372e-52e8-05A4-ab1c-274aad8bcf33" minOccurs="0" maxOccurs="unbounded" />
+        <xsd:element ref="Function" id="uuid-d4dbdad8-0cdd-4924-b091-b8bec961d03b" minOccurs="0" maxOccurs="unbounded" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Submitter" type="ContactInformationType" id="uuid-1dec258f-6516-4173-acfe-677c1cf24bf3">
+    <xsd:annotation>
+      <xsd:documentation source="documentation" xml:lang="EN">The person submitting the plan or report in StratML format.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="UnitOfMeasurement" type="xsd:string">
+    <xsd:annotation>
+      <xsd:documentation>The scale by which measurements are divided into increments.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:element name="WebAddress" type="xsd:string">
+    <xsd:annotation>
+      <xsd:documentation>A location URL)on the World Wide Web.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <!--Complex Types A - Z-->
+  <xsd:complexType name="AdministrativeInformationType" id="uuid-32864389-a032-4f77-9c09-c083386fcad9">
+    <xsd:sequence>
+      <xsd:element ref="Identifier" id="uuid-A36D9558-9F96-2794-91FA-B4F311A7735D" minOccurs="0" />
+      <xsd:element ref="PublicationDate" id="uuid-6ebfbf00-e08c-8114-8980-aba1f91c3936" minOccurs="0" />
+      <xsd:element ref="Source" id="uuid-f2e49267-3f70-a794-827e-3b65644badd8" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="CategoryType">
+	<xsd:sequence>
+		<xsd:element ref="Name"/>
+		<xsd:element ref="Identifier"/>
+		<xsd:element ref="WebAddress" minOccurs="0"/>
+	</xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="CategorizationType">
+	<xsd:sequence>
+		<xsd:element ref="Name" minOccurs="0"/>
+		<xsd:element ref="Category" maxOccurs="unbounded"/>
+	</xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ContactInformationType" id="uuid-b07e1586-6676-2124-8a6a-4a365a4977ec">
+    <xsd:sequence>
+      <xsd:element ref="Identifier" id="uuid-3AA1341B-C021-43a9-3D49-5AE78BEA9B90" minOccurs="0" />
+      <xsd:element ref="FirstName" id="uuid-be2396f2-cdf9-c894-82ef-1ce1b9209086" minOccurs="0" />
+      <xsd:element ref="LastName" id="uuid-3d5034e0-328a-46a0-bf5b-776e070cca5f" minOccurs="0" />
+      <xsd:element ref="PhoneNumber" id="uuid-160fe527-9d1d-423a-59cb-ad48f3257276" minOccurs="0" />
+      <xsd:element ref="EmailAddress" id="uuid-9e408a3b-034a-486f-540b-7cc74505b44d" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FeatureType" id="uuid-3604D5A8-2B17-1b14-88E9-F71866006E23">
+    <xsd:sequence>
+      <xsd:element ref="Name" id="uuid-0b19dff1-b98e-470f-08ca-92a755d8aa37" minOccurs="0" />
+      <xsd:element ref="Description" id="uuid-b454f40f-721c-1a24-ba43-3a56ef37766e" />
+      <xsd:element ref="Identifier" id="uuid-f0543f96-c5be-77d4-a86d-d2f04122a5ea" minOccurs="0" />
+      <xsd:element ref="SequenceIndicator" id="uuid-af23adab-d9d6-b264-a627-8cd2547d8193" minOccurs="0" />
+	  <xsd:element ref="PerformanceIndicator" minOccurs="0" maxOccurs="unbounded" />
+      <xsd:element ref="OtherInformation" id="uuid-edd05fe8-91ca-4511-5bf8-c360ac07ebe8" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FunctionType" id="uuid-A494052D-115D-4452-9B4B-DC0FF3089A79">
+    <xsd:sequence>
+      <xsd:element ref="Name" id="uuid-36e8852b-2761-460d-110b-0c01c7bdecd3" minOccurs="0" />
+      <xsd:element ref="Description" id="uuid-687daacf-29b3-4e91-b1e7-8e9191d17338" />
+      <xsd:element ref="Identifier" id="uuid-8e762c3e-b658-4f5c-93d1-a2513667507f" minOccurs="0" />
+      <xsd:element ref="SequenceIndicator" id="uuid-abbc7e84-8306-4c89-9c8e-30a9d09616d2" minOccurs="0" />
+	  <xsd:element ref="PerformanceIndicator" minOccurs="0" maxOccurs="unbounded" />
+      <xsd:element ref="OtherInformation" id="uuid-75d113e5-18ea-4c6f-87ca-1811557471fb" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ObjectiveType" id="uuid-A494052D-115D-4452-B49B-DC0FF3089A79">
+    <xsd:sequence>
+      <xsd:element ref="Name" id="uuid-36e8852b-2761-460d-b911-0c01c7bdecd3" minOccurs="0" />
+      <xsd:element ref="Description" id="uuid-687daacf-3b29-4e91-b1e7-8e9191d17338" />
+      <xsd:element ref="Identifier" id="uuid-8e762c3e-85b6-4f5c-93d1-a2513667507f" minOccurs="0" />
+      <xsd:element ref="OtherInformation" id="uuid-75d113e5-ae18-4c6f-87ca-1811557471fb" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="PictureType" id="uuid-A494052D-115D-2533-9B4B-DC0FF3089A79">
+    <xsd:sequence>
+      <xsd:element ref="Name" id="uuid-36e8852b-2761-d052-110b-0c01c7bdecd3" minOccurs="0" />
+      <xsd:element ref="Description" id="uuid-687daacf-29b3-1983-b1e7-8e9191d17338" />
+      <xsd:element ref="Identifier" id="uuid-8e762c3e-b658-cfby-93d1-a2513667507f" minOccurs="0" />
+      <xsd:element ref="SequenceIndicator" id="uuid-abbc7e84-8306-974m-9c8e-30a9d09616d2" minOccurs="0" />
+      <xsd:element ref="OtherInformation" id="uuid-75d113e5-18ea-648x-87ca-1811557471fb" minOccurs="0" />
+      <xsd:element ref="WebAddress" id="uuid-75d113e5-18ea-648x-87ca-18115574mxcv" minOccurs="1" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <!--Simple Types A - Z-->
+  <xsd:simpleType name="PerformanceIndicatorTypeType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Quantitative" />
+      <xsd:enumeration value="Qualitative" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="CurrencyTypeType" id="uuid-91D3FADB-E6CF-45a0-0428-34E1DBCFc01e">
+	<xsd:restriction base="xsd:string">
+      <xsd:enumeration value="USD" />
+      <xsd:enumeration value="EUR" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="RelationshipTypeType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Broader_Than" />
+      <xsd:enumeration value="Peer_To" />
+      <xsd:enumeration value="Narrower_Than" />
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>
