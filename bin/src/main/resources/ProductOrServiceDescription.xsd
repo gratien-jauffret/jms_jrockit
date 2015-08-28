@@ -287,6 +287,7 @@
       <xsd:documentation>The scale by which measurements are divided into increments.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
+
   <xsd:element name="WebAddress" type="xsd:string">
     <xsd:annotation>
       <xsd:documentation>A location URL)on the World Wide Web.</xsd:documentation>

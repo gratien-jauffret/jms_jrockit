@@ -31,7 +31,6 @@ public class JmsReceiverTest {
 			
 			@Override
 			public Message createMessage(Session session) throws JMSException {
-				logger.info("creates message");
 				return session.createTextMessage("ping!");
 			}
 		});

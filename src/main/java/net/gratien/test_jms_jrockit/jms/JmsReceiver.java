@@ -1,22 +1,37 @@
 package net.gratien.test_jms_jrockit.jms;
 
+import javax.jms.Message;
+import javax.jms.MessageListener;
+import javax.jms.TextMessage;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.jms.annotation.JmsListener;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import net.gratien.test_jms_jrockit.controllers.MainController;
+import net.stratml.productorservicedescription.ProductOrServiceDescription;
+
 @Component
-public class JmsReceiver {
-	
+public class JmsReceiver implements MessageListener {
+
 	Logger logger = LoggerFactory.getLogger(JmsReceiver.class);
 
-    /**
-     * When you receive a message, print it out, then shut down the application.
-     * Finally, clean up any ActiveMQ server stuff.
-     */
-    @JmsListener(destination = "jms.queue", containerFactory = "jmsContainerFactory")
-    public void receiveMessage(String message) {
-//        System.out.println("Received <" + message + ">");
-    	logger.info("Received <" + message + ">");
-    }
+	@Autowired
+	MainController controller;
+
+	@Override
+	public void onMessage(Message message) {
+		TextMessage msg = null;
+		try {
+			logger.info("received message : " + message);
+			msg = (TextMessage) message;
+			String xml = msg.getText();
+			controller.handleJmsMessage(xml);
+		} catch (Exception ex) {
+			if (logger.isErrorEnabled()) {
+				logger.error("Could not parse notification from queue {0} due to {1} ", new Object[] { "myQueue", ex });
+			}
+		}
+	}
 }

@@ -1,0 +1,45 @@
+How to Use This Class on Windows with a local Oracle wls from within an Eclipse project
+
+Hava your Oracle wls server started. 
+(e.g. cd C:\Oracle\Middleware\Oracle_Home\user_projects\domains\base_domain
+startWebLogic.cmd
+
+Create a JMS server, a connection factory and a queue following : 
+https://blogs.oracle.com/soaproactive/entry/how_to_create_a_simple
+
+In the Weblogic server console > Services > Messaging > JMS Modules > (Module name, e.g. TestJMSModule) > (JMS queue name, e.g. TestJMSQueue)
+Select the queue and note its JNDI name,
+e.g. jms/TestJMSQueue
+The JNDI name of a connection factory to connect to the queue
+
+Follow the same path as above to get the connection factory for the above queue, e.g.
+TestConnectionFactory and its JNDI name
+e.g. jms/TestConnectionFactory
+The URL and port of the WebLogic server running the above queue
+Check the JMS server for the above queue and the managed server it is targeted to, for example soa_server1. 
+Now find the port this managed server is listening on, by looking at its entry under Environment > Servers in the WLS console,
+e.g. 8001
+The URL for the server to be given to the QueueSend program in this example will therefore be t3://host.domain:8001
+e.g. t3://jbevans-lx.de.oracle.com:8001
+
+Edit QueueSend.java and enter the above queue name and connection factory respectively under
+
+...
+public final static String  JMS_FACTORY="jms/TestConnectionFactory";
+
+...
+public final static String QUEUE="jms/TestJMSQueue";
+
+...
+
+Compile QueueSend.java using
+
+javac -cp "../../../../../../../lib/*;" QueueSend.java
+
+Go to the source’s top-level directory and execute it using
+
+java net.gratien.test_jms_jrockit.external.QueueSend t3://localhost:7001
+
+This will prompt for a text input or “quit” to end.
+
+In the WLS console, go to the queue and select Monitoring to confirm that a new message was written to the queue.
